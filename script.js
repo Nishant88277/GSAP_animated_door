@@ -1,6 +1,6 @@
 $(function() {
 
-    $("#live").on("click",function(e){
+    $("#live").on("mousewheel",function(e){
   
       if (!$("main").hasClass("learn-selected")) {
   
@@ -11,7 +11,7 @@ $(function() {
             topY = $(href).offset().top;
          
         TweenMax.to($(window), 1, {
-          scrollTo:{
+          mousewheelTo:{
             y: topY, 
             autoKill: true
           }, 
@@ -24,7 +24,7 @@ $(function() {
       
     });
   
-    $("#learn").on("click",function(e){
+    $("#learn").on("mousewheel",function(e){
       
       if (!$("main").hasClass("live-selected")) {
   
@@ -35,7 +35,7 @@ $(function() {
             topY = $(href).offset().top;
          
         TweenMax.to($(window), 1, {
-          scrollTo:{
+          mousewheelTo:{
             y: topY, 
             autoKill: true
           }, 
@@ -48,13 +48,11 @@ $(function() {
   
     });
   
-    $("#door-left, #door-right").on("click",function(e){
-      //console.log("clicked");
+    $("#door-left, #door-right").one("mousewheel",function(e){
       TweenLite.set(".door", {perspective:"400vw"});
       TimelineMax.add(getTL1());
-      //TimelineMax.add(getTL2());
+      //TimelineMax.add(getTL2());   
     });
-  
   });
   
   //TweenLite.set(".door", {perspective:"400vw"});
@@ -63,6 +61,7 @@ $(function() {
   TimelineMax.add(getTL3());
   
   function getTL1() {
+
     var tl = new TimelineMax({yoyo:true, repeat:0})
     .add("startTL")
     
